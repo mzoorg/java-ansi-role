@@ -3,7 +3,7 @@
   apt:
     update_cache: yes
     state: present
-    pkg: "{{ items }}"
+    pkg: "{{ item }}"
   with_items: "{{ pkgs_deploy }}"
   when: "'deploy' in inventory_hostname"
 
@@ -11,6 +11,6 @@
   apt:
     update_cache: yes
     state: present
-    pkg: "{{ items }}"
-  with_items: "{{ pkgs_deploy }}"
+    pkg: "{{ item }}"
+  with_items: "{{ pkgs_app }}"
   when: "'app' in inventory_hostname"
