@@ -1,0 +1,14 @@
+---
+- name: Start Deploy
+  hosts: deploy
+  become: yes
+  roles:
+    - common
+    - deploy
+
+- name: Start app
+  hosts: app
+  become: yes
+  roles:
+    - common
+    - app

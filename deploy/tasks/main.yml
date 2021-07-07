@@ -1,0 +1,22 @@
+---
+- name: Create a directory if it does not exist
+    ansible.builtin.file:
+      path: {{ created_app }}
+      state: directory
+      mode: '0755'
+
+  - name: clone repo
+    git:
+      repo: https://github.com/boxfuse/boxfuse-sample-java-war-hello.git
+      dest: {{ created_app }}
+
+  - name: mvn package
+    command:
+      chdir: {{ created_app }}
+      cmd: mvn package
+
+  - name: synchronize war file
+    ansible.posix.synchronize:
+      src: {{ file_sync_from }}
+      dest: {{ file_sync_to }}
+    delegate_to: {{ server_sync_from }}

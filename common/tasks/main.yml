@@ -1,0 +1,16 @@
+---
+- name: Ensure pkgs install deploy
+  apt:
+    update_cache: yes
+    state: present
+    pkg: {{ items }}
+  with_items: {{ pkgs_deploy }}
+  when: "'deploy' in inventory_hostname"
+
+- name: Ensure pkgs install app
+  apt:
+    update_cache: yes
+    state: present
+    pkg: {{ items }}
+  with_items: {{ pkgs_app }}
+  when: "'app' in inventory_hostname"

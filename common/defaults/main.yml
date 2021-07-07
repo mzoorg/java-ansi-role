@@ -1,0 +1,11 @@
+---
+pkgs_deploy:
+  - git
+  - maven
+  - default-jdk
+  - rsync
+
+pkgs_app:
+  - rsync
+  - tomcat9
+  - default-jdk

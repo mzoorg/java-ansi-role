@@ -1,0 +1,5 @@
+---
+created_app: /data/boxfuse
+file_sync_from: {{ created_app }}/target/hello-1.0.war
+file_sync_to: {{ hostvars['app'].ansible_host }}:/home/yafoo
+server_sync_from: {{ hostvars['deploy'].ansible_host }}
